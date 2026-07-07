@@ -41,7 +41,6 @@ export function TrackRow({ song }: { song: Song }) {
       <span className="hidden md:inline text-xs font-mono opacity-40 tabular-nums">{song.duration}</span>
       <Link
         to="/contact"
-        search={{ song: song.slug }}
         className="text-[10px] font-bold uppercase tracking-[0.2em] px-4 py-2 rounded-full border border-ink/15 hover:bg-ink hover:text-paper transition-colors shrink-0"
       >
         License
