@@ -38,7 +38,7 @@ function GenrePage() {
         <p className="text-lg max-w-2xl opacity-70">{genre.description}</p>
       </header>
       <div>
-        {tracks.map((s: any) => <TrackRow key={s.slug} song={s} />)}
+        {tracks.map((s: import("@/lib/catalog-data").Song) => <TrackRow key={s.slug} song={s} />)}
       </div>
     </div>
   );

@@ -53,7 +53,7 @@ function ArtistPage() {
       <section>
         <h2 className="font-serif text-3xl italic mb-6">Recordings ({tracks.length})</h2>
         <div>
-          {tracks.map((s: any) => <TrackRow key={s.slug} song={s} />)}
+          {tracks.map((s: import("@/lib/catalog-data").Song) => <TrackRow key={s.slug} song={s} />)}
         </div>
       </section>
     </div>
