@@ -9,38 +9,258 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as PortalRouteImport } from './routes/portal'
+import { Route as NewsRouteImport } from './routes/news'
+import { Route as LicensingRouteImport } from './routes/licensing'
+import { Route as GenresRouteImport } from './routes/genres'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CatalogRouteImport } from './routes/catalog'
+import { Route as ArtistsRouteImport } from './routes/artists'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as GenresSlugRouteImport } from './routes/genres.$slug'
+import { Route as CatalogSlugRouteImport } from './routes/catalog.$slug'
+import { Route as ArtistsSlugRouteImport } from './routes/artists.$slug'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PortalRoute = PortalRouteImport.update({
+  id: '/portal',
+  path: '/portal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsRoute = NewsRouteImport.update({
+  id: '/news',
+  path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LicensingRoute = LicensingRouteImport.update({
+  id: '/licensing',
+  path: '/licensing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GenresRoute = GenresRouteImport.update({
+  id: '/genres',
+  path: '/genres',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CatalogRoute = CatalogRouteImport.update({
+  id: '/catalog',
+  path: '/catalog',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArtistsRoute = ArtistsRouteImport.update({
+  id: '/artists',
+  path: '/artists',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const GenresSlugRoute = GenresSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => GenresRoute,
+} as any)
+const CatalogSlugRoute = CatalogSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => CatalogRoute,
+} as any)
+const ArtistsSlugRoute = ArtistsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ArtistsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/artists': typeof ArtistsRouteWithChildren
+  '/catalog': typeof CatalogRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/genres': typeof GenresRouteWithChildren
+  '/licensing': typeof LicensingRoute
+  '/news': typeof NewsRoute
+  '/portal': typeof PortalRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/artists/$slug': typeof ArtistsSlugRoute
+  '/catalog/$slug': typeof CatalogSlugRoute
+  '/genres/$slug': typeof GenresSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/artists': typeof ArtistsRouteWithChildren
+  '/catalog': typeof CatalogRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/genres': typeof GenresRouteWithChildren
+  '/licensing': typeof LicensingRoute
+  '/news': typeof NewsRoute
+  '/portal': typeof PortalRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/artists/$slug': typeof ArtistsSlugRoute
+  '/catalog/$slug': typeof CatalogSlugRoute
+  '/genres/$slug': typeof GenresSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/artists': typeof ArtistsRouteWithChildren
+  '/catalog': typeof CatalogRouteWithChildren
+  '/contact': typeof ContactRoute
+  '/genres': typeof GenresRouteWithChildren
+  '/licensing': typeof LicensingRoute
+  '/news': typeof NewsRoute
+  '/portal': typeof PortalRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/artists/$slug': typeof ArtistsSlugRoute
+  '/catalog/$slug': typeof CatalogSlugRoute
+  '/genres/$slug': typeof GenresSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/artists'
+    | '/catalog'
+    | '/contact'
+    | '/genres'
+    | '/licensing'
+    | '/news'
+    | '/portal'
+    | '/sitemap.xml'
+    | '/artists/$slug'
+    | '/catalog/$slug'
+    | '/genres/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/artists'
+    | '/catalog'
+    | '/contact'
+    | '/genres'
+    | '/licensing'
+    | '/news'
+    | '/portal'
+    | '/sitemap.xml'
+    | '/artists/$slug'
+    | '/catalog/$slug'
+    | '/genres/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/artists'
+    | '/catalog'
+    | '/contact'
+    | '/genres'
+    | '/licensing'
+    | '/news'
+    | '/portal'
+    | '/sitemap.xml'
+    | '/artists/$slug'
+    | '/catalog/$slug'
+    | '/genres/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  ArtistsRoute: typeof ArtistsRouteWithChildren
+  CatalogRoute: typeof CatalogRouteWithChildren
+  ContactRoute: typeof ContactRoute
+  GenresRoute: typeof GenresRouteWithChildren
+  LicensingRoute: typeof LicensingRoute
+  NewsRoute: typeof NewsRoute
+  PortalRoute: typeof PortalRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/portal': {
+      id: '/portal'
+      path: '/portal'
+      fullPath: '/portal'
+      preLoaderRoute: typeof PortalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news': {
+      id: '/news'
+      path: '/news'
+      fullPath: '/news'
+      preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/licensing': {
+      id: '/licensing'
+      path: '/licensing'
+      fullPath: '/licensing'
+      preLoaderRoute: typeof LicensingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/genres': {
+      id: '/genres'
+      path: '/genres'
+      fullPath: '/genres'
+      preLoaderRoute: typeof GenresRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/catalog': {
+      id: '/catalog'
+      path: '/catalog'
+      fullPath: '/catalog'
+      preLoaderRoute: typeof CatalogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/artists': {
+      id: '/artists'
+      path: '/artists'
+      fullPath: '/artists'
+      preLoaderRoute: typeof ArtistsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +268,74 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/genres/$slug': {
+      id: '/genres/$slug'
+      path: '/$slug'
+      fullPath: '/genres/$slug'
+      preLoaderRoute: typeof GenresSlugRouteImport
+      parentRoute: typeof GenresRoute
+    }
+    '/catalog/$slug': {
+      id: '/catalog/$slug'
+      path: '/$slug'
+      fullPath: '/catalog/$slug'
+      preLoaderRoute: typeof CatalogSlugRouteImport
+      parentRoute: typeof CatalogRoute
+    }
+    '/artists/$slug': {
+      id: '/artists/$slug'
+      path: '/$slug'
+      fullPath: '/artists/$slug'
+      preLoaderRoute: typeof ArtistsSlugRouteImport
+      parentRoute: typeof ArtistsRoute
+    }
   }
 }
 
+interface ArtistsRouteChildren {
+  ArtistsSlugRoute: typeof ArtistsSlugRoute
+}
+
+const ArtistsRouteChildren: ArtistsRouteChildren = {
+  ArtistsSlugRoute: ArtistsSlugRoute,
+}
+
+const ArtistsRouteWithChildren =
+  ArtistsRoute._addFileChildren(ArtistsRouteChildren)
+
+interface CatalogRouteChildren {
+  CatalogSlugRoute: typeof CatalogSlugRoute
+}
+
+const CatalogRouteChildren: CatalogRouteChildren = {
+  CatalogSlugRoute: CatalogSlugRoute,
+}
+
+const CatalogRouteWithChildren =
+  CatalogRoute._addFileChildren(CatalogRouteChildren)
+
+interface GenresRouteChildren {
+  GenresSlugRoute: typeof GenresSlugRoute
+}
+
+const GenresRouteChildren: GenresRouteChildren = {
+  GenresSlugRoute: GenresSlugRoute,
+}
+
+const GenresRouteWithChildren =
+  GenresRoute._addFileChildren(GenresRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  ArtistsRoute: ArtistsRouteWithChildren,
+  CatalogRoute: CatalogRouteWithChildren,
+  ContactRoute: ContactRoute,
+  GenresRoute: GenresRouteWithChildren,
+  LicensingRoute: LicensingRoute,
+  NewsRoute: NewsRoute,
+  PortalRoute: PortalRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

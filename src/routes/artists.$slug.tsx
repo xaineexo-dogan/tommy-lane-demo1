@@ -34,7 +34,7 @@ function ArtistPage() {
       </Link>
       <header className="grid lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] gap-12 mt-8 mb-16">
         <div className="aspect-square rounded-2xl bg-gradient-to-br from-ink/80 to-brand-accent grid place-items-center text-paper">
-          <span className="font-serif italic text-6xl">{artist.name.split(" ").map(w => w[0]).join("").slice(0,3)}</span>
+          <span className="font-serif italic text-6xl">{artist.name.split(" ").map((w: string) => w[0]).join("").slice(0,3)}</span>
         </div>
         <div>
           <p className="text-[10px] font-bold uppercase tracking-[0.3em] opacity-40 mb-4">
@@ -53,7 +53,7 @@ function ArtistPage() {
       <section>
         <h2 className="font-serif text-3xl italic mb-6">Recordings ({tracks.length})</h2>
         <div>
-          {tracks.map((s) => <TrackRow key={s.slug} song={s} />)}
+          {tracks.map((s: any) => <TrackRow key={s.slug} song={s} />)}
         </div>
       </section>
     </div>

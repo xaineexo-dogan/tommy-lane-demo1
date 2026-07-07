@@ -70,7 +70,7 @@ function SongPage() {
             <div className="col-span-2">
               <dt className="text-[10px] font-bold uppercase tracking-[0.2em] opacity-50">Suggested uses</dt>
               <dd className="mt-2 flex flex-wrap gap-2">
-                {song.suggestedUses.map((u) => (
+                {song.suggestedUses.map((u: string) => (
                   <span key={u} className="px-3 py-1 bg-ink/5 text-xs rounded-full">{u}</span>
                 ))}
               </dd>
