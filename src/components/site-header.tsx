@@ -7,6 +7,7 @@ const nav = [
   { to: "/genres", label: "Genres", hasDropdown: true },
   { to: "/about", label: "About" },
   { to: "/news", label: "News" },
+  { to: "/podcast", label: "Podcast" },
   { to: "/portal", label: "The Portal" },
 ] as const;
 
