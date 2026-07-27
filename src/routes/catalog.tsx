@@ -18,6 +18,111 @@ export const Route = createFileRoute("/catalog")({
 
 const vocalOptions = ["All", "Vocal", "Instrumental"] as const;
 
+const extendedGenreGroups: { label: string; options: string[] }[] = [
+  {
+    label: "Country",
+    options: [
+      "Traditional country",
+      "Nashville sound",
+      "Countrypolitan",
+      "Country pop",
+      "Country rock",
+      "Alternative country",
+      "Americana",
+      "Outlaw country",
+      "Honky-tonk",
+      "Western swing",
+      "Cowboy/Western",
+      "Hillbilly",
+      "Hillbilly bop",
+      "Rockabilly",
+      "Bakersfield sound",
+    ],
+  },
+  {
+    label: "Bluegrass and folk",
+    options: [
+      "Bluegrass",
+      "Progressive bluegrass",
+      "Newgrass",
+      "Folk",
+      "Folk rock",
+      "Roots music",
+      "Old-time music",
+      "Appalachian music",
+    ],
+  },
+  {
+    label: "Gospel and Christian",
+    options: [
+      "Southern gospel",
+      "Black gospel",
+      "Contemporary Christian music (CCM)",
+      "Christian pop",
+      "Christian rock",
+      "Worship music",
+    ],
+  },
+  {
+    label: "Rock",
+    options: [
+      "Rock",
+      "Southern rock",
+      "Indie rock",
+      "Alternative rock",
+      "Pop rock",
+      "Hard rock",
+      "Garage rock",
+    ],
+  },
+  {
+    label: "Pop",
+    options: ["Pop", "Adult contemporary", "Singer-songwriter"],
+  },
+  {
+    label: "Black American music",
+    options: ["Blues", "Rhythm and blues (R&B)", "Soul", "Funk", "Jazz"],
+  },
+  {
+    label: "Other Nashville communities",
+    options: [
+      "Classical",
+      "Orchestral",
+      "Chamber music",
+      "Barbershop harmony",
+      "Choral music",
+      "Celtic",
+      "Irish folk",
+      "Cajun",
+      "Zydeco",
+      "Latin music",
+      "Hip hop",
+      "Rap",
+      "Trap",
+      "Electronic",
+      "EDM",
+      "Lo-fi",
+      "Indie pop",
+    ],
+  },
+  {
+    label: "Hybrid and niche",
+    options: [
+      "Cowpunk",
+      "Gothic country",
+      "Country soul",
+      "Country blues",
+      "Progressive country",
+      "Neo-traditional country",
+      "Red Dirt",
+      "Heartland rock",
+      "Roots rock",
+      "Southern soul",
+      "Blues rock",
+    ],
+  },
+];
+
 function Catalog() {
   const [query, setQuery] = useState("");
   const [genre, setGenre] = useState<string>("all");
