@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import webLogo from "@/assets/web-logo.png.asset.json";
 
 export function SiteLoader() {
   const [hidden, setHidden] = useState(false);
@@ -15,7 +16,6 @@ export function SiteLoader() {
 
   if (hidden) return null;
 
-  // Bars animating like an equalizer — the "Nashville music" motif.
   const bars = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
 
   return (
@@ -26,9 +26,20 @@ export function SiteLoader() {
       aria-hidden="true"
     >
       <div className="flex flex-col items-center gap-8">
-        {/* Nashville music animation: guitar + equalizer bars + music notes */}
-        <div className="relative flex flex-col items-center gap-4">
-          {/* Floating music notes */}
+        {/* Web logo (glowing) */}
+        <div className="flex flex-col items-center gap-2">
+          <img
+            src={webLogo.url}
+            alt="Web"
+            className="h-24 w-auto object-contain loader-glow"
+          />
+          <span className="text-[10px] tracking-[0.4em] uppercase font-bold text-brand-accent">
+            Demo Idea
+          </span>
+        </div>
+
+        {/* Nashville music animation */}
+        <div className="relative flex flex-col items-center gap-4 loader-glow">
           <div className="relative h-10 w-40">
             <span className="absolute left-2 top-0 font-serif text-2xl text-brand-accent animate-[note_2.4s_ease-in-out_infinite]">
               ♪
@@ -41,7 +52,6 @@ export function SiteLoader() {
             </span>
           </div>
 
-          {/* Equalizer bars */}
           <div className="flex items-end gap-1 h-14">
             {bars.map((i) => (
               <span
@@ -55,7 +65,6 @@ export function SiteLoader() {
             ))}
           </div>
 
-          {/* Guitar silhouette (SVG) with subtle strum */}
           <svg
             viewBox="0 0 220 60"
             className="w-56 h-14 text-ink animate-[strum_2.6s_ease-in-out_infinite]"
@@ -64,29 +73,24 @@ export function SiteLoader() {
             strokeWidth="1.2"
             strokeLinecap="round"
           >
-            {/* Neck */}
             <line x1="10" y1="30" x2="140" y2="30" />
-            {/* Frets */}
             {[30, 55, 80, 105, 130].map((x) => (
               <line key={x} x1={x} y1="26" x2={x} y2="34" />
             ))}
-            {/* Body */}
             <ellipse cx="175" cy="30" rx="35" ry="22" />
             <circle cx="170" cy="30" r="7" className="text-brand-accent" stroke="currentColor" />
-            {/* Strings */}
             <line x1="10" y1="27" x2="205" y2="27" strokeWidth="0.4" />
             <line x1="10" y1="30" x2="205" y2="30" strokeWidth="0.4" />
             <line x1="10" y1="33" x2="205" y2="33" strokeWidth="0.4" />
           </svg>
 
-          {/* NASHVILLE label */}
           <span className="text-[10px] tracking-[0.5em] uppercase font-bold text-ink/60">
             Nashville · Est. Since 1985
           </span>
         </div>
 
-        {/* Logo */}
-        <div className="flex items-center gap-3 animate-pulse">
+        {/* Tommy Lane logo (glowing) */}
+        <div className="flex items-center gap-3 animate-pulse loader-glow">
           <div className="size-14 bg-ink rounded-full grid place-items-center text-paper font-serif italic text-3xl">
             T
           </div>
@@ -117,6 +121,19 @@ export function SiteLoader() {
         @keyframes strum {
           0%, 100% { transform: translateX(0) rotate(0deg); }
           50% { transform: translateX(2px) rotate(-1deg); }
+        }
+        @keyframes glowPulse {
+          0%, 100% {
+            filter: drop-shadow(0 0 6px color-mix(in oklab, var(--brand-accent, #d97757) 60%, transparent))
+                    drop-shadow(0 0 18px color-mix(in oklab, var(--brand-accent, #d97757) 35%, transparent));
+          }
+          50% {
+            filter: drop-shadow(0 0 14px color-mix(in oklab, var(--brand-accent, #d97757) 85%, transparent))
+                    drop-shadow(0 0 32px color-mix(in oklab, var(--brand-accent, #d97757) 55%, transparent));
+          }
+        }
+        .loader-glow {
+          animation: glowPulse 2.2s ease-in-out infinite;
         }
       `}</style>
     </div>
