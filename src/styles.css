@@ -70,6 +70,10 @@
   --ring: var(--brand-accent);
 }
 
+#lovable-badge {
+  display: none !important;
+}
+
 @layer base {
   * {
     border-color: var(--color-border);
