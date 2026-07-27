@@ -58,8 +58,21 @@ function Catalog() {
           className="px-4 py-3 bg-transparent border border-ink/15 rounded-sm text-sm focus:outline-none focus:border-brand-accent"
         >
           <option value="all">All genres</option>
-          {genres.map((g) => (
-            <option key={g.slug} value={g.slug}>{g.name}</option>
+          {genres.length > 0 && (
+            <optgroup label="Catalog genres">
+              {genres.map((g) => (
+                <option key={g.slug} value={g.slug}>{g.name}</option>
+              ))}
+            </optgroup>
+          )}
+          {extendedGenreGroups.map((group) => (
+            <optgroup key={group.label} label={group.label}>
+              {group.options.map((name) => (
+                <option key={name} value={name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}>
+                  {name}
+                </option>
+              ))}
+            </optgroup>
           ))}
         </select>
         <div className="flex border border-ink/15 rounded-sm overflow-hidden text-xs">
