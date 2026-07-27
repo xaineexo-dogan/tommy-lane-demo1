@@ -14,6 +14,7 @@ import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteLoader } from "@/components/site-loader";
+import { MouseNotes } from "@/components/mouse-notes";
 
 function NotFoundComponent() {
   return (
@@ -120,6 +121,7 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <SiteLoader />
+      <MouseNotes />
       <div className="min-h-screen bg-paper text-ink">
         <SiteHeader />
         <Outlet />
