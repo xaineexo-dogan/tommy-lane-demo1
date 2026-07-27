@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as PortalRouteImport } from './routes/portal'
+import { Route as PodcastRouteImport } from './routes/podcast'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as LicensingRouteImport } from './routes/licensing'
 import { Route as GenresRouteImport } from './routes/genres'
@@ -31,6 +32,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const PortalRoute = PortalRouteImport.update({
   id: '/portal',
   path: '/portal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PodcastRoute = PodcastRouteImport.update({
+  id: '/podcast',
+  path: '/podcast',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NewsRoute = NewsRouteImport.update({
@@ -98,6 +104,7 @@ export interface FileRoutesByFullPath {
   '/genres': typeof GenresRouteWithChildren
   '/licensing': typeof LicensingRoute
   '/news': typeof NewsRoute
+  '/podcast': typeof PodcastRoute
   '/portal': typeof PortalRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/artists/$slug': typeof ArtistsSlugRoute
@@ -113,6 +120,7 @@ export interface FileRoutesByTo {
   '/genres': typeof GenresRouteWithChildren
   '/licensing': typeof LicensingRoute
   '/news': typeof NewsRoute
+  '/podcast': typeof PodcastRoute
   '/portal': typeof PortalRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/artists/$slug': typeof ArtistsSlugRoute
@@ -129,6 +137,7 @@ export interface FileRoutesById {
   '/genres': typeof GenresRouteWithChildren
   '/licensing': typeof LicensingRoute
   '/news': typeof NewsRoute
+  '/podcast': typeof PodcastRoute
   '/portal': typeof PortalRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/artists/$slug': typeof ArtistsSlugRoute
@@ -146,6 +155,7 @@ export interface FileRouteTypes {
     | '/genres'
     | '/licensing'
     | '/news'
+    | '/podcast'
     | '/portal'
     | '/sitemap.xml'
     | '/artists/$slug'
@@ -161,6 +171,7 @@ export interface FileRouteTypes {
     | '/genres'
     | '/licensing'
     | '/news'
+    | '/podcast'
     | '/portal'
     | '/sitemap.xml'
     | '/artists/$slug'
@@ -176,6 +187,7 @@ export interface FileRouteTypes {
     | '/genres'
     | '/licensing'
     | '/news'
+    | '/podcast'
     | '/portal'
     | '/sitemap.xml'
     | '/artists/$slug'
@@ -192,6 +204,7 @@ export interface RootRouteChildren {
   GenresRoute: typeof GenresRouteWithChildren
   LicensingRoute: typeof LicensingRoute
   NewsRoute: typeof NewsRoute
+  PodcastRoute: typeof PodcastRoute
   PortalRoute: typeof PortalRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
@@ -210,6 +223,13 @@ declare module '@tanstack/react-router' {
       path: '/portal'
       fullPath: '/portal'
       preLoaderRoute: typeof PortalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/podcast': {
+      id: '/podcast'
+      path: '/podcast'
+      fullPath: '/podcast'
+      preLoaderRoute: typeof PodcastRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/news': {
@@ -334,6 +354,7 @@ const rootRouteChildren: RootRouteChildren = {
   GenresRoute: GenresRouteWithChildren,
   LicensingRoute: LicensingRoute,
   NewsRoute: NewsRoute,
+  PodcastRoute: PodcastRoute,
   PortalRoute: PortalRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
