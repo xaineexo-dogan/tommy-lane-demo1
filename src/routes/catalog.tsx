@@ -18,6 +18,111 @@ export const Route = createFileRoute("/catalog")({
 
 const vocalOptions = ["All", "Vocal", "Instrumental"] as const;
 
+const extendedGenreGroups: { label: string; options: string[] }[] = [
+  {
+    label: "Country",
+    options: [
+      "Traditional country",
+      "Nashville sound",
+      "Countrypolitan",
+      "Country pop",
+      "Country rock",
+      "Alternative country",
+      "Americana",
+      "Outlaw country",
+      "Honky-tonk",
+      "Western swing",
+      "Cowboy/Western",
+      "Hillbilly",
+      "Hillbilly bop",
+      "Rockabilly",
+      "Bakersfield sound",
+    ],
+  },
+  {
+    label: "Bluegrass and folk",
+    options: [
+      "Bluegrass",
+      "Progressive bluegrass",
+      "Newgrass",
+      "Folk",
+      "Folk rock",
+      "Roots music",
+      "Old-time music",
+      "Appalachian music",
+    ],
+  },
+  {
+    label: "Gospel and Christian",
+    options: [
+      "Southern gospel",
+      "Black gospel",
+      "Contemporary Christian music (CCM)",
+      "Christian pop",
+      "Christian rock",
+      "Worship music",
+    ],
+  },
+  {
+    label: "Rock",
+    options: [
+      "Rock",
+      "Southern rock",
+      "Indie rock",
+      "Alternative rock",
+      "Pop rock",
+      "Hard rock",
+      "Garage rock",
+    ],
+  },
+  {
+    label: "Pop",
+    options: ["Pop", "Adult contemporary", "Singer-songwriter"],
+  },
+  {
+    label: "Black American music",
+    options: ["Blues", "Rhythm and blues (R&B)", "Soul", "Funk", "Jazz"],
+  },
+  {
+    label: "Other Nashville communities",
+    options: [
+      "Classical",
+      "Orchestral",
+      "Chamber music",
+      "Barbershop harmony",
+      "Choral music",
+      "Celtic",
+      "Irish folk",
+      "Cajun",
+      "Zydeco",
+      "Latin music",
+      "Hip hop",
+      "Rap",
+      "Trap",
+      "Electronic",
+      "EDM",
+      "Lo-fi",
+      "Indie pop",
+    ],
+  },
+  {
+    label: "Hybrid and niche",
+    options: [
+      "Cowpunk",
+      "Gothic country",
+      "Country soul",
+      "Country blues",
+      "Progressive country",
+      "Neo-traditional country",
+      "Red Dirt",
+      "Heartland rock",
+      "Roots rock",
+      "Southern soul",
+      "Blues rock",
+    ],
+  },
+];
+
 function Catalog() {
   const [query, setQuery] = useState("");
   const [genre, setGenre] = useState<string>("all");
@@ -58,8 +163,21 @@ function Catalog() {
           className="px-4 py-3 bg-transparent border border-ink/15 rounded-sm text-sm focus:outline-none focus:border-brand-accent"
         >
           <option value="all">All genres</option>
-          {genres.map((g) => (
-            <option key={g.slug} value={g.slug}>{g.name}</option>
+          {genres.length > 0 && (
+            <optgroup label="Catalog genres">
+              {genres.map((g) => (
+                <option key={g.slug} value={g.slug}>{g.name}</option>
+              ))}
+            </optgroup>
+          )}
+          {extendedGenreGroups.map((group) => (
+            <optgroup key={group.label} label={group.label}>
+              {group.options.map((name) => (
+                <option key={name} value={name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")}>
+                  {name}
+                </option>
+              ))}
+            </optgroup>
           ))}
         </select>
         <div className="flex border border-ink/15 rounded-sm overflow-hidden text-xs">
